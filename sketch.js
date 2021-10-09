@@ -4,38 +4,22 @@ const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
 
-var paperObject, ground;
 var box1,box2,box3;
-
-
-function preload()
-{
-	
-}
+var ground, paperObject;
 
 function setup() {
 	createCanvas(800, 700);
 
-
 	engine = Engine.create();
 	world = engine.world;
 
-	//Create the Bodies Here.
-	var paperObject_options={ isStatic:false,
-		                      restitution: 0.5,
-							  friction:1.2};
-	paperObject= Bodies.circle(100,100,20,paperObject_options);
-	paperObject.shapeColour= color(235);
-    World.add(world,paperObject);
-	
-	var ground_options= {isStatic:true}
-    ground= Bodies.rectangle(200,390,200,20,ground_options);
-	ground.shapeColor=color(255)
- 	World.add(world, ground);
-
+	ground= new Ground(600,548,40,10);
 	box1= new Dustbin(700,320,70,70);
     box2=new Dustbin(920,320,70,70);
 	box3=new Dustbin(990,372,70,70);
+	paperObject= new Paper(460,510,30,20);
+	dustbin= new Dustbin(430,720,10,20);
+    
 
 	 keyPressed();
 	Engine.run(engine);
@@ -44,11 +28,15 @@ function setup() {
 
 
 function draw() {
+  background(200);
+  Engine.update(engine);
   rectMode(CENTER);
   background(0);
   box1.display();
   box2.display();
   box3.display();
+  ground.display();
+  paperObject.display();
   
   drawSprites();
  

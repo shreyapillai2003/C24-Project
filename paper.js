@@ -15,7 +15,7 @@ class Paper
      display() {
         var pos=this.body.position;
         push() 
-        fill("yellow")
+        fill("yellow");
         rectMode(CENTER);
         rect(pos.x,pos.y,this.width,this.height);
         pop()

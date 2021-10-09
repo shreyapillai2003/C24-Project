@@ -1,9 +1,9 @@
-class Dustbin
+class Ground
 {
     constructor(x,y,w,h){
-    var options= {restitution:0.8,
-                  friction:1.0,
-                  density:1.0}
+    var options= {isStatic:true
+                      }
+
     this.width=w;
     this.height=h;
     this.xpos=x;
@@ -13,7 +13,7 @@ class Dustbin
     }
      display() {
         var pos=this.body.position;
-        fill("green");
+        fill("red");
         rectMode(CENTER);
         rect(pos.x,pos.y,this.width,this.height);
 
